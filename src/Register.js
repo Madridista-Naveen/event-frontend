@@ -10,6 +10,12 @@ export default function Register() {
 
     async function register(e) {
         e.preventDefault();
+
+        if (!name || !year || !mnumber || !email) {
+          alert('Please fill in all fields');
+          return;
+        }
+        
         const response = await fetch('http://localhost:5000/register',{
         method: 'POST',
         body: JSON.stringify({name,year,mnumber,email}),
@@ -41,6 +47,7 @@ export default function Register() {
               placeholder="Your name"
               value={name}
               onChange={(ev) => setName(ev.target.value)}
+              required
             />
             <label htmlFor="floatingInput">Name</label>
           </div>
@@ -53,6 +60,7 @@ export default function Register() {
               placeholder="Graduation year"
               value={year}
               onChange={(ev) => setYear(ev.target.value)}
+              required
             />
             <label htmlFor="floatingInput">Year of Graduation</label>
           </div>
@@ -65,6 +73,7 @@ export default function Register() {
               placeholder="Your number"
               value={mnumber}
               onChange={(ev) => setMnumber(ev.target.value)}
+              required
             />
             <label htmlFor="floatingInput">Mobile no.</label>
           </div>
@@ -77,6 +86,7 @@ export default function Register() {
               placeholder="name@example.com"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
+              required
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>

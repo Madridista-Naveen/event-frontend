@@ -10,3 +10,119 @@
 .form-floating {
     padding-top: 5px;
 }
+
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+  
+  .dashboard-table {
+    width: 70%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-table th,
+  .dashboard-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .dashboard-table th {
+    background-color: #f0f0f0;
+  }
+  
+  .dashboard-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+  }
+  
+  .dashboard-table tbody {
+    max-height: 300px; 
+    overflow-y: auto;
+  }
+  
+  .dashboard-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .dashboard-table tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination span {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  .pagination span.active {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-table {
+      width: 100%;
+    }
+  
+    .dashboard-table th,
+    .dashboard-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .dashboard-table th {
+      font-size: 16px;
+    }
+  
+    .pagination li {
+      font-size: 14px;
+    }
+  }
+  
+  .filter-and-sort {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .filter-and-sort input[type="text"],
+  .filter-and-sort select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .filter-and-sort select {
+    flex:1;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
