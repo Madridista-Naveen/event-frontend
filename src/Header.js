@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import { useEffect } from "react";
 
 
 export default function Header() {
 
+  useEffect(() => {
+    fetch('http://localhost:5000/profile', {
+      credentials: 'include', // Include cookies in the request
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Log the response for debugging
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }, []);
 
 
   return (

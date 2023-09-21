@@ -1,25 +1,28 @@
-    import React from 'react';
-    import { useNavigate } from "react-router-dom";
-   
-    function LandingPage() {
+import React, { useState, useEffect } from 'react';
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 
-    const navigate = useNavigate();
-    const redirectToLogin = () => {
-        navigate("/userLogin")
-    }
+function App() {
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
 
-    const redirectToRegister = () => {
-        navigate("/userRegistration")
-    }
-    
-    return (
-        <div>
-        <h1>Welcome to Your App</h1>
-        <p>Choose an option:</p>
-        <button onClick={redirectToLogin}>Login</button>
-        <button onClick={redirectToRegister}>Register</button>
-        </div>
-    );
-    }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    export default LandingPage;
+  return (
+    <div>
+      {isAuthenticated ? (
+        <>
+          <p>Welcome, {user.name}!</p>
+          <button onClick={() => logout()}>Logout</button>
+        </>
+      ) : (
+        <>
+          <p>You are not logged in.</p>
+          <button onClick={() => loginWithRedirect()}>Login</button>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default App;

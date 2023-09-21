@@ -2,12 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import img from "./assets/Reunion.jpg";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0
 
 export default function Home() {
   const navigate = useNavigate();
+  const { logout, isAuthenticated } = useAuth0();
 
   function redirectToRegister() {
-    navigate("/register");
+    navigate("register"); // Use a relative path to navigate to /register
   }
 
   return (
@@ -41,7 +43,18 @@ export default function Home() {
                 className="btn btn-primary btn-lg px-4 me-md-2"
               >
                 Register
-              </button>
+              </button>              
+              {isAuthenticated && (
+                <button
+                  onClick={() => {
+                    logout();
+                  }}
+                  type="button"
+                  className="btn btn-danger btn-lg px-4"
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>
